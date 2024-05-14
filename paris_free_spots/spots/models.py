@@ -1,9 +1,10 @@
 from django.db import models
 
 class DrinkingFountain(models.Model):
-    object_type = models.CharField(max_length=50)
-    address = models.CharField(max_length=255)
-    district = models.CharField(max_length=10)
+    fountain_id = models.CharField(max_length=100,unique=True, null=False)
+    object_type = models.CharField(max_length=50, null=True)
+    address = models.CharField(max_length=255, null=True)
+    district = models.CharField(max_length=10, null=True)
     available = models.BooleanField(default=True)
     longitude = models.FloatField()
     latitude = models.FloatField()
@@ -11,15 +12,12 @@ class DrinkingFountain(models.Model):
     def __str__(self):
         return f"{self.address} ({self.district})"
 
-
-
-
-
 class Sanisette(models.Model):
-    type = models.CharField(max_length=100)
-    address = models.CharField(max_length=255)
-    district = models.CharField(max_length=10)
-    hours = models.CharField(max_length=50)
+    sanisette_id = models.CharField(max_length=100,unique=True, null=False)
+    type = models.CharField(max_length=100, null=True)
+    address = models.CharField(max_length=255, null=True)
+    district = models.CharField(max_length=10, null=True)
+    hours = models.CharField(max_length=50, null=True)
     access_pmr = models.BooleanField(default=False)
     longitude = models.FloatField()
     latitude = models.FloatField()
