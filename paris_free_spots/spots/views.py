@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ReadOnlyModelViewSet
-from .models import DrinkingFountain, Sanisette, WifiSpot, LabHIV
-from .serializers import DrinkingFountainSerializer, SanisetteSerializer, WifiSpotSerializer, LabHIVSerializer
+from .models import DrinkingFountain, Sanisette, WifiSpot, LabHIV, Defibrillateur
+from .serializers import DrinkingFountainSerializer, SanisetteSerializer, WifiSpotSerializer, LabHIVSerializer, DefibrillateurSerializer
 
 class DrinkingFountainViewSet(ReadOnlyModelViewSet):
     queryset = DrinkingFountain.objects.all()
@@ -17,3 +17,7 @@ class WifiSpotViewSet(ReadOnlyModelViewSet):
 class LabHIVViewSet(ReadOnlyModelViewSet):
     queryset = LabHIV.objects.all()
     serializer_class = LabHIVSerializer
+
+class DefibrillateurViewSet(ReadOnlyModelViewSet):
+    queryset = Defibrillateur.objects.all()
+    serializer_class = DefibrillateurSerializer
