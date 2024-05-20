@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ReadOnlyModelViewSet
-from .models import DrinkingFountain, Sanisette
-from .serializers import DrinkingFountainSerializer, SanisetteSerializer
+from .models import DrinkingFountain, Sanisette, WifiSpot
+from .serializers import DrinkingFountainSerializer, SanisetteSerializer, WifiSpotSerializer
 
 class DrinkingFountainViewSet(ReadOnlyModelViewSet):
     queryset = DrinkingFountain.objects.all()
@@ -10,3 +10,6 @@ class SanisetteViewSet(ReadOnlyModelViewSet):
     queryset = Sanisette.objects.all()
     serializer_class = SanisetteSerializer
 
+class WifiSpotViewSet(ReadOnlyModelViewSet):
+    queryset = WifiSpot.objects.all()
+    serializer_class = WifiSpotSerializer

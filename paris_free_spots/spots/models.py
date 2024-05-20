@@ -24,3 +24,16 @@ class Sanisette(models.Model):
 
     def __str__(self):
         return f"{self.address} ({self.district})"
+    
+class WifiSpot(models.Model):
+    wifi_id = models.CharField(max_length=100,unique=True, null=False)
+    spot_name = models.CharField(max_length=100, null=True)
+    address = models.CharField(max_length=255, null=True)
+    district = models.CharField(max_length=50, null=True)
+    state = models.BooleanField(default=False)
+    longitude = models.FloatField()
+    latitude = models.FloatField()
+
+    def __str__(self):
+        return f"{self.address} ({self.district})"
+    
