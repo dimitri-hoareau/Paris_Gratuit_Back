@@ -35,5 +35,19 @@ class WifiSpot(models.Model):
     latitude = models.FloatField()
 
     def __str__(self):
-        return f"{self.address} ({self.district})"
+        return f"{self.spot_name} ({self.district})"
+    
+
+class LabHIV(models.Model):
+    lab_id = models.CharField(max_length=100,unique=True, null=False)
+    lab_name = models.CharField(max_length=100, null=True)
+    address = models.CharField(max_length=255, null=True)
+    district = models.CharField(max_length=50, null=True)
+    hours = models.CharField(max_length=255, null=True)
+    phone = models.CharField(max_length=50, null=True)
+    longitude = models.FloatField()
+    latitude = models.FloatField()
+
+    def __str__(self):
+        return f"{self.lab_name} ({self.district})"
     
