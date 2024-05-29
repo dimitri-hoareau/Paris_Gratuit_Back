@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import DrinkingFountain, Sanisette, WifiSpot, LabHIV, Defibrillateur
+from .models import DrinkingFountain, Sanisette, WifiSpot, LabHIV, Defibrillateur, OrganicWasteTrash, RecyclingTrash, TextileRecyclingTrash, SecondLifeCenter, SapinCollect
 
 class DrinkingFountainSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,4 +24,29 @@ class LabHIVSerializer(serializers.ModelSerializer):
 class DefibrillateurSerializer(serializers.ModelSerializer):
     class Meta:
         model = Defibrillateur
+        fields = '__all__'
+
+class OrganicWasteTrashSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OrganicWasteTrash
+        fields = '__all__'
+
+class RecyclingTrashSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RecyclingTrash
+        fields = '__all__'
+
+class TextileRecyclingTrashSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TextileRecyclingTrash
+        fields = '__all__'
+
+class SecondLifeCenterSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SecondLifeCenter
+        fields = '__all__'
+
+class SapinCollectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SapinCollect
         fields = '__all__'

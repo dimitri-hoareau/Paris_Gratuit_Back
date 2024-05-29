@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'spots',
+    'events',
     'rest_framework',
     'corsheaders',
 ]
@@ -144,7 +145,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #TODO REMOVE THIS FOR PRODUCTION !! *******************************************************************
 CORS_ALLOW_ALL_ORIGINS = True  
 
-
+#TODO FIX LOGGER !! *******************************************************************
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,

@@ -28,15 +28,22 @@ class Command(BaseCommand):
                 raise CommandError(f"API request failed: {e}")
 
             data = response.json()
-            print(data)
             total_count = data.get("total_count", 0)
             if number_of_iterations == 0:
                 number_of_iterations = (total_count + limit - 1) // limit
 
             results = data.get("results", [])
             for record in results:
+                print(record)
+                # Vérifiez si 'geo_point_2d' n'est pas None
+                if record.get('geo_point_2d'):
+                    longitude = record['geo_point_2d']['lon']
+                    latitude = record['geo_point_2d']['lat']
+                else:
+                    # Si 'geo_point_2d' est None, définissez longitude et latitude sur None ou une autre valeur par défaut
+                    longitude = None
+                    latitude = None
                 try:
-
                     # Mettre à jour ou créer l'objet Defibrillateur
                     Defibrillateur.objects.update_or_create(
                         def_id= record['objectid'],
@@ -45,14 +52,14 @@ class Command(BaseCommand):
                             'address': record['adr_post'],
                             'district': record['code_post'],
                             'state': record['etat_inst'] == 'Existant',
-                            'longitude': record['geo_point_2d']['lon'],
-                            'latitude': record['geo_point_2d']['lat']
+                            'longitude': longitude,
+                            'latitude': latitude
                         }
                     )
-                    logger.info(Defibrillateur)
                 except IntegrityError as e:
                     logger.error(f"Error inserting/updating record {record['code_cpam']}: {e}")
                     print("error for one Defibrillateur")
+                    pass
 
             offset += limit
             if offset >= number_of_iterations * limit:

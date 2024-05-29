@@ -64,3 +64,60 @@ class Defibrillateur(models.Model):
     def __str__(self):
         return f"{self.spot_name} ({self.district})"
     
+class OrganicWasteTrash(models.Model):
+    trash_id = models.CharField(max_length=100,unique=True, null=False)
+    spot_name = models.CharField(max_length=100, null=True)
+    address = models.CharField(max_length=255, null=True)
+    district = models.CharField(max_length=50, null=True)
+    longitude = models.FloatField()
+    latitude = models.FloatField()
+
+    def __str__(self):
+        return f"{self.spot_name} ({self.district})"
+    
+class RecyclingTrash(models.Model):
+    trash_id = models.CharField(max_length=100,unique=True, null=False)
+    address = models.CharField(max_length=255, null=True)
+    district = models.CharField(max_length=50, null=True)
+    state = models.BooleanField(default=False)
+    longitude = models.FloatField()
+    latitude = models.FloatField()
+
+    def __str__(self):
+        return f"{self.address} ({self.district})"
+    
+
+class TextileRecyclingTrash(models.Model):
+    trash_id = models.CharField(max_length=100,unique=True, null=False)
+    address = models.CharField(max_length=255, null=True)
+    district = models.CharField(max_length=50, null=True)
+    operator = models.CharField(max_length=50, null=True)
+    longitude = models.FloatField()
+    latitude = models.FloatField()
+
+    def __str__(self):
+        return f"{self.address} ({self.district})"
+    
+class SecondLifeCenter(models.Model):
+    trash_id = models.CharField(max_length=100,unique=True, null=False)
+    address = models.CharField(max_length=255, null=True)
+    district = models.CharField(max_length=50, null=True)
+    operator = models.CharField(max_length=50, null=True)
+    longitude = models.FloatField()
+    latitude = models.FloatField()
+
+    def __str__(self):
+        return f"{self.operator} ({self.district})"
+    
+class SapinCollect(models.Model):
+    spot_id = models.CharField(max_length=100,unique=True, null=False)
+    spot_name = models.CharField(max_length=100, null=True)
+    address = models.CharField(max_length=255, null=True)
+    district = models.CharField(max_length=50, null=True)
+    public = models.BooleanField(default=False)
+    link = models.CharField(max_length=255, null=True)
+    longitude = models.FloatField()
+    latitude = models.FloatField()
+
+    def __str__(self):
+        return f"{self.spot_name} ({self.district})"
