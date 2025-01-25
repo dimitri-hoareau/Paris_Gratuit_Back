@@ -35,17 +35,13 @@ class Command(BaseCommand):
 
             results = data.get("results", [])
             for record in results:
-                print(record)
                 try:
-                    # Déterminer le numéro de voirie à inclure dans l'adresse
                     no_voirie = record.get('no_voirie_impair') or record.get('no_voirie_pair') or ''
                     if no_voirie:
-                        no_voirie += ' '  # Ajouter un espace après le numéro s'il existe
+                        no_voirie += ' ' 
 
-                    # Construire l'adresse complète
                     address = f"{no_voirie}{record['voie']}, {record['commune']}".strip()
 
-                    # Mettre à jour ou créer l'objet DrinkingFountain
                     DrinkingFountain.objects.update_or_create(
                         fountain_id= record['gid'],
                         defaults={

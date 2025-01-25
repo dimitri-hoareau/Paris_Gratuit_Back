@@ -19,7 +19,7 @@ class Event(models.Model):
     address_zipcode = models.CharField(max_length=50)
     address_city = models.CharField(max_length=100)
     price_type = models.CharField(max_length=100,null=True, blank=True)
-    price_detail = models.CharField(null=True, blank=True)
+    price_detail = models.CharField(max_length=255, null=True, blank=True)
     latitude = models.FloatField()
     longitude = models.FloatField()
 

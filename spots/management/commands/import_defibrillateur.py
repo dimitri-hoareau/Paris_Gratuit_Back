@@ -35,16 +35,14 @@ class Command(BaseCommand):
             results = data.get("results", [])
             for record in results:
                 print(record)
-                # Vérifiez si 'geo_point_2d' n'est pas None
+                # check if 'geo_point_2d' is not None
                 if record.get('geo_point_2d'):
                     longitude = record['geo_point_2d']['lon']
                     latitude = record['geo_point_2d']['lat']
                 else:
-                    # Si 'geo_point_2d' est None, définissez longitude et latitude sur None ou une autre valeur par défaut
                     longitude = None
                     latitude = None
                 try:
-                    # Mettre à jour ou créer l'objet Defibrillateur
                     Defibrillateur.objects.update_or_create(
                         def_id= record['objectid'],
                         defaults={
